@@ -50,10 +50,13 @@ public class Version implements Comparable<Version> {
 
     private Version(String versionAsString) {
         int index = 0;
+        StringJoiner stringJoiner = new StringJoiner(".");
         for (String s : versionAsString.split("\\.")) {
-            versionNumbers.put(index++, Long.valueOf(s));
+            Long value = Long.valueOf(s);
+            versionNumbers.put(index++, value);
+            stringJoiner.add(value.toString());
         }
-        this.rawVersion = versionAsString;
+        this.rawVersion = stringJoiner.toString();
     }
 
     public static Version from(String versionAsString) {
@@ -89,14 +92,24 @@ public class Version implements Comparable<Version> {
 
         for (Integer i : iterationBase) {
 
-            // 'other' version is larger if 'this' version is shorter and previous numbers were equal
+            // if 'this' version is shorter and previous numbers were equal
             if (!vn1.containsKey(i)) {
-                return -1;
+                // if longer version contains simply more zeroes, it's not considered newer
+                if (Long.compare(0L, vn2.get(i)) == 0){
+                    continue;
+                } else {
+                // but if there are non-zeroes, longer version is considered newer
+                    return -1;
+                }
             }
 
-            // 'this' version is larger if 'other' version is shorter and previous numbers were equal
+            // same check if 'other' version is longer
             if (!vn2.containsKey(i)) {
-                return 1;
+                if (Long.compare(0L, vn1.get(i)) == 0){
+                    continue;
+                } else {
+                    return 1;
+                }
             }
 
             int compare = Long.compare(vn1.get(i), vn2.get(i));

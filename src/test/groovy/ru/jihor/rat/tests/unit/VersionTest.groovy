@@ -14,10 +14,10 @@ public class VersionTest extends Specification {
         "1.0"                     | "1.0"
         "1.0.0"                   | "1.0.0"
         "1.0.10-SNAPSHOT"         | "1.0.10"
-        "1.0.00"                  | "1.0.00"
+        "1.0.00"                  | "1.0.0"
         "1.whatever.0"            | "1.0"
         "1...0"                   | "1.0"
-        "1.0.awt0n6.0sf0ghbq4gj5" | "1.0.06.0045"
+        "1.0.awt0n6.0sf0ghbq4gj5" | "1.0.6.45"
     }
 
     @Unroll
@@ -27,8 +27,8 @@ public class VersionTest extends Specification {
         where:
         v1                              | v2                              | result
         Version.from("1.0")             | Version.from("1.0")             | 0
-        Version.from("1.0")             | Version.from("1.0.0")           | -1
-        Version.from("1.0.0")           | Version.from("1.0")             | 1
+        Version.from("1.0")             | Version.from("1.0.0")           | 0
+        Version.from("1.0.0.0")           | Version.from("1.0")           | 0
         Version.from("1.0")             | Version.from("2.0.0")           | -1
         Version.from("2.0.0")           | Version.from("1.0")             | 1
         Version.from("1.0.0")           | Version.from("2.0")             | -1
