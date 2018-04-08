@@ -1,4 +1,4 @@
-# rat - Remove Advice Tool
+# rat - Removal Advice Tool
 A simple `javac` annotation processor, which produces warnings for code elements annotated with `@Remove`, `@RemoveInVersion` and `@RemoveAfterDate` annotations.
 [![CircleCI](https://circleci.com/gh/jihor/rat/tree/master.svg?style=shield)](https://circleci.com/gh/jihor/rat/tree/master)
 
@@ -55,3 +55,6 @@ tasks.withType(GroovyCompile) {
     options.compilerArgs += ["-Arat.project.version=$project.version"]
 }
 ```
+##### IntelliJ Idea
+The Gradle settings mentioned before will sadly NOT set the version for the annotation processor when `Build`&rarr;`Build project` is executed in IntelliJ Idea, because of this bug: https://youtrack.jetbrains.com/issue/IDEA-154038 .
+The workaround is to open the IDE settings and set up the version manually in `Build, Execution, Environment` -> `Compiler` -> `Java Compiler` -> `Additional command line parameters`: `-Arat.project.version=<project version>`
