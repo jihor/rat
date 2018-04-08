@@ -21,8 +21,7 @@ import static java.lang.annotation.ElementType.TYPE;
 public @interface RemoveInVersion {
 
     /**
-     * Version in X.Y format
-     * TODO support other version formats
+     * Version in X.Y.Z format
      */
     String version();
 

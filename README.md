@@ -31,18 +31,20 @@ dependencies {
 ### Usage
 #### Annotations
 The following annotations are available:
-- `@Remove`: denotes that the element should be removed. 
+- `@Remove`: denotes that the element should be removed
     - Fields: 
         - `reason` (optional) 
-- `@RemoveInVersion`: denotes that the element should be removed in a specific version (e.g. `2.0`). 
-   
+    - How does it work:  the annotation processor will always print a warning for the annotated element
+- `@RemoveInVersion`: denotes that the element should be removed in an upcoming version (e.g. `2.0`) 
     - Fields: 
         - `version` (mandatory, in any sensible format)
         - `reason` (optional) 
-- `@RemoveAfterDate`: denotes that the element should be removed after a certain date.
+    - How does it work: the annotation processor will print a warning for the annotated element if version in the annotation <= current version. Snapshots are not respected, e.g. an element annotated with `@RemoveInVersion(version = "2.0")` will produce a warning in a `2.0-SNAPSHOT` build 
+- `@RemoveAfterDate`: denotes that the element should be removed after a certain date
     - Fields: 
         - `date` (mandatory, in `yyyy-MM-dd` format)
         - `reason` (optional) 
+    - How does it work:  the annotation processor will print a warning for the annotated element if date in the annotation < current date
 
 See `ru.jihor.rat.Demo` in `test` scope for examples.
 
