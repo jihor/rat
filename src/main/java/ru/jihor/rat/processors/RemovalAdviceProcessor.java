@@ -33,7 +33,7 @@ import java.util.stream.Stream;
  */
 
 @AutoService(Processor.class)
-public class RemoveAnnotationProcessor extends AbstractProcessor {
+public class RemovalAdviceProcessor extends AbstractProcessor {
 
     private static final Class<Remove> REMOVE = Remove.class;
     private static final Class<RemoveInVersion> REMOVE_IN_VERSION = RemoveInVersion.class;
