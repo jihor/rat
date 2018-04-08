@@ -18,7 +18,7 @@ public class Demo {
     @RemoveAfterDate(date = "2015-12-31", reason = "too late")
     public static final String value = "nice";
 
-    @RemoveInVersion(version = "2.0", reason = "too old")
+    @RemoveInVersion(version = "0.0.1", reason = "too old")
     public void test1() {
     }
 

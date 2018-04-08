@@ -31,13 +31,11 @@ dependencies {
 }
 
 // this will sadly NOT work in IntelliJ Idea, see https://youtrack.jetbrains.com/issue/IDEA-154038
-gradle.projectsEvaluated {
-    tasks.withType(GroovyCompile) {
-        options.compilerArgs += ["-Arat.project.version=2.8-SNAPSHOT"]
-    }
-    tasks.withType(JavaCompile) {
-        options.compilerArgs += ["-Arat.project.version=2.8-SNAPSHOT"]
-    }
+tasks.withType(JavaCompile) {
+    options.compilerArgs += ["-Arat.project.version=$project.version"]
+}
+tasks.withType(GroovyCompile) {
+    options.compilerArgs += ["-Arat.project.version=$project.version"]
 }
 
 if (project.name != 'demo') {
