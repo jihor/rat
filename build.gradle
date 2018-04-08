@@ -11,7 +11,7 @@ buildscript {
 }
 
 group "ru.jihor.rat"
-version "0.0.1-SNAPSHOT"
+version "0.0.1"
 
 apply plugin: 'java'
 apply plugin: 'groovy'
