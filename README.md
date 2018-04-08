@@ -1,6 +1,8 @@
 # rat - Removal Advice Tool
-A simple `javac` annotation processor, which produces warnings for code elements annotated with `@Remove`, `@RemoveInVersion` and `@RemoveAfterDate` annotations.
+This is a simple `javac` annotation processor, which produces compilation warnings for code elements annotated with `@Remove`, `@RemoveInVersion` and `@RemoveAfterDate` annotations.
+Essentially, these are TODOs, done the annotation processor way!
 
+[![Download](https://api.bintray.com/packages/jihor/maven/rat/images/download.svg)](https://bintray.com/jihor/maven/rat/_latestVersion)
 [![CircleCI](https://circleci.com/gh/jihor/rat/tree/master.svg?style=shield)](https://circleci.com/gh/jihor/rat/tree/master)
 
 ### Download
@@ -28,6 +30,7 @@ dependencies {
 
 ### Usage
 #### Annotations
+The following annotations are available:
 - `@Remove`: denotes that the element should be removed. 
     - Fields: 
         - `reason` (optional) 
