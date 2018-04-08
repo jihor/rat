@@ -4,7 +4,7 @@ import ru.jihor.rat.utils.Version
 import spock.lang.Specification
 import spock.lang.Unroll
 
-public class VersionTest extends Specification {
+class VersionTest extends Specification {
     @Unroll
     def "Version should build correctly for any remotely valid string"(String src, String rawVersion) {
         expect:
@@ -28,11 +28,11 @@ public class VersionTest extends Specification {
         v1                              | v2                              | result
         Version.from("1.0")             | Version.from("1.0")             | 0
         Version.from("1.0")             | Version.from("1.0.0")           | 0
-        Version.from("1.0.0.0")           | Version.from("1.0")           | 0
+        Version.from("1.0.0.0")         | Version.from("1.0")             | 0
         Version.from("1.0")             | Version.from("2.0.0")           | -1
         Version.from("2.0.0")           | Version.from("1.0")             | 1
         Version.from("1.0.0")           | Version.from("2.0")             | -1
-        Version.from("2.0")             | Version.from("1.0.0")             | 1
+        Version.from("2.0")             | Version.from("1.0.0")           | 1
         Version.from("1.0.10-SNAPSHOT") | Version.from("1.0.10")          | 0
         Version.from("1.0.10-SNAPSHOT") | Version.from("1.0.11-SNAPSHOT") | -1
         Version.from("1.0.11-SNAPSHOT") | Version.from("1.0.10-SNAPSHOT") | 1
