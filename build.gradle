@@ -74,7 +74,7 @@ if (project.name != 'demo') {
             repo = 'maven'
             name = rootProject.name
             licenses = ['Apache-2.0']
-            vcsUrl = 'https://github.com/jihor/hiatus-spring-boot.git'
+            vcsUrl = 'https://github.com/jihor/rat.git'
         }
     }
 
